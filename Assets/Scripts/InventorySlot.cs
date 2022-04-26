@@ -19,46 +19,41 @@ public class InventorySlot
 
     public InventorySlot()
     {
-        itemData = null;
-        stackSize = -1;
-        {
-            ClearSlot();
-        }
+        ClearSlot();
+    }
 
-        void ClearSlot()
+        public void ClearSlot()
 
         {
             itemData = null;
             stackSize = -1;
         }
-
+        public bool RoomLeftInStack(int amountToAdd, out int amountRemaining)
         {
-           bool RoomLeftInStack(int amountToAdd, out int amountRemaining);
 
             amountRemaining = ItemData.MaxStackSize - stackSize;
 
-            return RoomLeftInStack(amountToAdd);
+            return RoomLeftInStackE(amountToAdd);
+
+        }
 
 
 
-            bool RoomLeftInStack(int amountToAdd)
-            {
-                if (stackSize + amountToAdd <= itemData.MaxStackSize) return true;
-                else return false;
-            }
+        public bool RoomLeftInStackE(int amountToAdd)
+        {
+            if (stackSize + amountToAdd <= itemData.MaxStackSize) return true;
+            else return false;
+        }
 
-            void AddToStack(int amount)
+            public void AddToStack(int amount)
             {
                 stackSize += amount;
             }
 
-            void RemoveFromStack(int amount)
+            public void RemoveFromStack(int amount)
             {
                 stackSize -= amount;
             }
         }
-    }
-}
-
 
 
