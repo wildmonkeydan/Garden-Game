@@ -32,10 +32,6 @@ public class Movement : MonoBehaviour
     {
         mouselook();
         moveUpdate();
-
-        {
-
-        }
     }
 
     void mouselook()
