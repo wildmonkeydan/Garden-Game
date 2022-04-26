@@ -5,6 +5,7 @@ using UnityEngine;
 public class Soil : MonoBehaviour
 {
     Material material;
+    ParticleSystem particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +18,8 @@ public class Soil : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnParticleCollision(GameObject other)
     {
-            Debug.Log("hi");
-            material.color = Color.yellow;
+        Debug.Log("hi");
     }
 }
