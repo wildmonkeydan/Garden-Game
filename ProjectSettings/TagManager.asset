@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - soil
+  - canpickup
   layers:
   - Default
   - TransparentFX

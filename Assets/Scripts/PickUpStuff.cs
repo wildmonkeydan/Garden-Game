@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PickUpStuff : MonoBehaviour
 {
-    public Transform hands;
+    //public Transform hands;
+    public Camera cam;
+    public InventoryHolder inventoryHolder;
+    public InventoryData wateringCanData;
+    
 
-    private void OnMouseDown()
+    /*private void OnMouseDown()
     {
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
@@ -19,6 +23,23 @@ public class PickUpStuff : MonoBehaviour
         this.transform.parent = null;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<BoxCollider>().enabled = true;
-    }
+    }*/
 
+    private void Start()
+    {
+
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Ray ray = new Ray(transform.position, cam.transform.forward);
+            Physics.Raycast(ray, out RaycastHit hit);
+            if(hit.collider.gameObject.tag == "canpickup")
+            {
+                Destroy(hit.collider.gameObject);
+                inventoryHolder.InventorySystem.AddToInventory(wateringCanData, 1);
+            }
+        }
+    }
 }
