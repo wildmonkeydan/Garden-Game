@@ -7,9 +7,11 @@ public class InventoryEquip : MonoBehaviour
     int index = 0;
     public InventoryHolder inventory;
     public GameObject wateringCan;
+    public GameObject shovel;
     void Start()
     {
         wateringCan.SetActive(false);
+        shovel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,7 +32,14 @@ public class InventoryEquip : MonoBehaviour
             if (inventory.InventorySystem.InventorySlots[index].ItemData.ID == 0)
             {
                 wateringCan.SetActive(true);
+                shovel.SetActive(false);
             }
+            if(inventory.InventorySystem.InventorySlots[index].ItemData.ID == 1)
+            {
+                wateringCan.SetActive(false);
+                shovel.SetActive(true);
+            }
+
         }
         else
         {

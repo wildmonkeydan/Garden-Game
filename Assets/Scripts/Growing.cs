@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Growing : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public PlantIndex index;
     void Start()
     {
         

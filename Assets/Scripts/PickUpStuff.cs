@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUpStuff : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class PickUpStuff : MonoBehaviour
     public Camera cam;
     public InventoryHolder inventoryHolder;
     public InventoryData wateringCanData;
+    public InventoryData shovelData;
     public WateringCan can;
-    
+    public Text text;
+    string hint = "";
 
     /*private void OnMouseDown()
     {
@@ -32,10 +35,29 @@ public class PickUpStuff : MonoBehaviour
     }
     private void Update()
     {
+        Ray ray = new Ray(transform.position, cam.transform.forward);
+        Physics.Raycast(ray, out RaycastHit hit);
+
+        hint = " ";
+
+        if (hit.collider.gameObject.tag == "canpickup")
+        {
+            hint = "Pick Up Watering Can";
+        }
+
+        if (hit.collider.gameObject.tag == "h2o")
+        {
+            hint = "Refill Watering Can";
+        }
+
+        if(hit.collider.gameObject.tag == "shovelpickup")
+        {
+            hint = "Pick Up Shovel";
+        }
+
         if (Input.GetMouseButton(0))
         {
-            Ray ray = new Ray(transform.position, cam.transform.forward);
-            Physics.Raycast(ray, out RaycastHit hit);
+            
             if(hit.collider.gameObject.tag == "canpickup")
             {
                 Destroy(hit.collider.gameObject);
@@ -45,6 +67,13 @@ public class PickUpStuff : MonoBehaviour
             {
                 can.waterLevel = 0.01f;
             }
+            if (hit.collider.gameObject.tag == "shovelpickup")
+            {
+                Destroy(hit.collider.gameObject);
+                inventoryHolder.InventorySystem.AddToInventory(shovelData, 1);
+            }
         }
+
+        text.text = hint;
     }
 }
