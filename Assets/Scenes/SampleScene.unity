@@ -941,6 +941,9 @@ GameObject:
   - component: {fileID: 724116756}
   - component: {fileID: 724116755}
   - component: {fileID: 724116754}
+  - component: {fileID: 724116760}
+  - component: {fileID: 724116761}
+  - component: {fileID: 724116762}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1062,6 +1065,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &724116760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724116753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06da096842861554087f0bafba359261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 963194227}
+  inventoryHolder: {fileID: 724116761}
+  wateringCanData: {fileID: 11400000, guid: 4af9dd782a9c2e74ab3896afde850533, type: 2}
+  can: {fileID: 798719735}
+--- !u!114 &724116761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724116753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57ea3d153528854f99a3ce2c1fd322e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 10
+  inventorySystem:
+    inventorySlots: []
+--- !u!114 &724116762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724116753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312ea6c525789694a83864d0bad85f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 724116761}
+  wateringCan: {fileID: 798719734}
 --- !u!4 &724686250 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3bf5e448cefafe1409ea384424b4154f, type: 3}
@@ -1148,6 +1196,24 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 286a0de1740483a43aa7fef6c860e9ad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cec3bb8f9a35d49b5a95930ae8715b, type: 3}
+--- !u!1 &755981583 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b526d8fe5e070f942a17a0a3144694da, type: 3}
+  m_PrefabInstance: {fileID: 1638551807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &755981585
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755981583}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 84.82775, y: 147.4142, z: 124.93541}
+  m_Center: {x: -4.239122, y: 3.8624785, z: 4.135976}
 --- !u!1 &768882305
 GameObject:
   m_ObjectHideFlags: 0
@@ -5958,6 +6024,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b0a08104f491a0441a1850438e2034b8, type: 3}
   m_PrefabInstance: {fileID: 1233409273}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &798719734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 10c108d7eae42a9428f02162592c4176, type: 3}
+  m_PrefabInstance: {fileID: 970503186}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &798719735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798719734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682a2dd01d97652418d1d9ad65d8d9d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  water: {fileID: 768882307}
+  container: {fileID: 1822813095}
+  waterLevel: 0
 --- !u!1 &921990219
 GameObject:
   m_ObjectHideFlags: 0
@@ -7200,6 +7286,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b526d8fe5e070f942a17a0a3144694da, type: 3}
       propertyPath: m_Name
       value: H2O machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b526d8fe5e070f942a17a0a3144694da, type: 3}
+      propertyPath: m_TagString
+      value: h2o
       objectReference: {fileID: 0}
     - target: {fileID: 2586607309129781981, guid: b526d8fe5e070f942a17a0a3144694da, type: 3}
       propertyPath: m_Materials.Array.data[0]

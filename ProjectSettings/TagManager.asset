@@ -6,6 +6,7 @@ TagManager:
   tags:
   - soil
   - canpickup
+  - h2o
   layers:
   - Default
   - TransparentFX

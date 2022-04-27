@@ -8,6 +8,7 @@ public class PickUpStuff : MonoBehaviour
     public Camera cam;
     public InventoryHolder inventoryHolder;
     public InventoryData wateringCanData;
+    public WateringCan can;
     
 
     /*private void OnMouseDown()
@@ -39,6 +40,10 @@ public class PickUpStuff : MonoBehaviour
             {
                 Destroy(hit.collider.gameObject);
                 inventoryHolder.InventorySystem.AddToInventory(wateringCanData, 1);
+            }
+            if (hit.collider.gameObject.tag == "h2o")
+            {
+                can.waterLevel = 0.01f;
             }
         }
     }
