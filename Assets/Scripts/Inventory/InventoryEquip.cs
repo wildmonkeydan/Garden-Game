@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class InventoryEquip : MonoBehaviour
 {
-    int index = 0;
+    public int index = 0;
     public InventoryHolder inventory;
     public GameObject wateringCan;
     public GameObject shovel;
+    public GameObject potato;
     void Start()
     {
         wateringCan.SetActive(false);
         shovel.SetActive(false);
+        potato.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,20 +28,26 @@ public class InventoryEquip : MonoBehaviour
         {
             index = 9;
         }
-        Debug.Log(index);
         if (inventory.InventorySystem.InventorySlots[index].StackSize != -1)
         {
             if (inventory.InventorySystem.InventorySlots[index].ItemData.ID == 0)
             {
                 wateringCan.SetActive(true);
                 shovel.SetActive(false);
+                potato.SetActive(false);
             }
             if(inventory.InventorySystem.InventorySlots[index].ItemData.ID == 1)
             {
                 wateringCan.SetActive(false);
                 shovel.SetActive(true);
+                potato.SetActive(false);
             }
-
+            if(inventory.InventorySystem.InventorySlots[index].ItemData.ID == 2)
+            {
+                wateringCan.SetActive(false);
+                shovel.SetActive(false);
+                potato.SetActive(true);
+            }
         }
         else
         {

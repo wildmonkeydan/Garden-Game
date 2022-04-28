@@ -28,7 +28,7 @@ public class PlantIndex : MonoBehaviour
     public Plant blackberry;
     void Start()
     {
-        potato = new Plant(obj[0], 45f, 30f, 10f);
+        potato = new Plant(obj[0], 45, 30f, 10f);
         carrot = new Plant(obj[1], 30f, 20f, 20f);
         strawberry = new Plant(obj[2], 60f, 25f, 40f);
         blackberry = new Plant(obj[3], 90f, 50f, 30f);

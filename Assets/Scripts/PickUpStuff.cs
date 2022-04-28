@@ -10,9 +10,13 @@ public class PickUpStuff : MonoBehaviour
     public InventoryHolder inventoryHolder;
     public InventoryData wateringCanData;
     public InventoryData shovelData;
+    public InventoryData potato;
+    public GameObject potatoObj;
     public WateringCan can;
+    public InventoryEquip equip;
     public Text text;
     string hint = "";
+    bool canPlace = true;
 
     /*private void OnMouseDown()
     {
@@ -72,8 +76,33 @@ public class PickUpStuff : MonoBehaviour
                 Destroy(hit.collider.gameObject);
                 inventoryHolder.InventorySystem.AddToInventory(shovelData, 1);
             }
+            if(hit.collider.gameObject.tag == "soil")
+            {
+                inventoryHolder.InventorySystem.AddToInventory(potato, 1);
+            }
+            if(hit.collider.gameObject.tag == "potato")
+            {
+                Destroy(hit.collider.gameObject);
+                inventoryHolder.InventorySystem.AddToInventory(potato, 1);
+            }
+        }
+
+        if (Input.GetMouseButton(1))
+        {
+            if (hit.collider.gameObject.tag == "soil" && inventoryHolder.InventorySystem.InventorySlots[equip.index].StackSize > 0 && canPlace)
+            {
+                GameObject potatoInstance = Instantiate(potatoObj,hit.point,Quaternion.identity);
+                inventoryHolder.InventorySystem.InventorySlots[equip.index].RemoveFromStack(1);
+                canPlace = false;
+                Invoke("wait", 0.4f);
+            }
         }
 
         text.text = hint;
+    }
+
+    void wait()
+    {
+        canPlace = true;
     }
 }
