@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryEquip : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class InventoryEquip : MonoBehaviour
     public GameObject potato;
     public GameObject carrot;
     public GameObject strawberry;
+    public Image[] slots;
+    public Material[] materials;
     void Start()
     {
         wateringCan.SetActive(false);
@@ -78,6 +81,10 @@ public class InventoryEquip : MonoBehaviour
         else
         {
             wateringCan.SetActive(false);
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            slots[i].material = materials[inventory.InventorySystem.InventorySlots[i].ItemData.ID];
         }
     }
 }

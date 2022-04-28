@@ -29,18 +29,18 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
-        health -= 0.001f;
-        airQuality -= 0.001f;
+        health -= 0.002f;
+        airQuality -= 0.002f;
         healthT.text = string.Format("{0}",health);
         airQualityT.text = string.Format("{0}",airQuality);
 
         if(health < 0)
         {
-            SceneManager.LoadScene("samplescene");
+            SceneManager.LoadScene("SampleScene");
         }
         if (airQuality < 0)
         {
-            SceneManager.LoadScene("samplescene");
+            SceneManager.LoadScene("SampleScene");
         }
     }
 }
