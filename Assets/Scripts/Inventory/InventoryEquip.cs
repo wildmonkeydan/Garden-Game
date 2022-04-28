@@ -10,12 +10,14 @@ public class InventoryEquip : MonoBehaviour
     public GameObject shovel;
     public GameObject potato;
     public GameObject carrot;
+    public GameObject strawberry;
     void Start()
     {
         wateringCan.SetActive(false);
         shovel.SetActive(false);
         potato.SetActive(false);
         carrot.SetActive(false);
+        strawberry.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class InventoryEquip : MonoBehaviour
                 shovel.SetActive(false);
                 potato.SetActive(false);
                 carrot.SetActive(false);
+                strawberry.SetActive(false);
             }
             if(inventory.InventorySystem.InventorySlots[index].ItemData.ID == 1)
             {
@@ -45,6 +48,7 @@ public class InventoryEquip : MonoBehaviour
                 shovel.SetActive(true);
                 potato.SetActive(false);
                 carrot.SetActive(false);
+                strawberry.SetActive(false);
             }
             if(inventory.InventorySystem.InventorySlots[index].ItemData.ID == 2)
             {
@@ -52,6 +56,7 @@ public class InventoryEquip : MonoBehaviour
                 shovel.SetActive(false);
                 potato.SetActive(true);
                 carrot.SetActive(false);
+                strawberry.SetActive(false);
             }
             if(inventory.InventorySystem.InventorySlots[index].ItemData.ID == 3)
             {
@@ -59,6 +64,15 @@ public class InventoryEquip : MonoBehaviour
                 shovel.SetActive(false);
                 potato.SetActive(false);
                 carrot.SetActive(true);
+                strawberry.SetActive(false);
+            }
+            if (inventory.InventorySystem.InventorySlots[index].ItemData.ID == 5)
+            {
+                wateringCan.SetActive(false);
+                shovel.SetActive(false);
+                potato.SetActive(false);
+                carrot.SetActive(false);
+                strawberry.SetActive(true);
             }
         }
         else

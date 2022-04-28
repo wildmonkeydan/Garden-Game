@@ -12,8 +12,10 @@ public class PickUpStuff : MonoBehaviour
     public InventoryData shovelData;
     public InventoryData potato;
     public InventoryData carrot;
+    public InventoryData strawberry;
     public GameObject potatoObj;
     public GameObject carrotObj;
+    public GameObject strawberryObj;
     public WateringCan can;
     public InventoryEquip equip;
     public Text text;
@@ -80,7 +82,7 @@ public class PickUpStuff : MonoBehaviour
             }
             if(hit.collider.gameObject.tag == "soil")
             {
-                inventoryHolder.InventorySystem.AddToInventory(potato, 1);
+                inventoryHolder.InventorySystem.AddToInventory(strawberry, 1);
             }
             if(hit.collider.gameObject.tag == "potato" && inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID == 1)
             {
@@ -107,6 +109,13 @@ public class PickUpStuff : MonoBehaviour
                 Invoke("wait", 0.4f);
             }
 
+            if (hit.collider.gameObject.tag == "soil" && inventoryHolder.InventorySystem.InventorySlots[equip.index].StackSize > 0 && canPlace && inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID == 5)
+            {
+                Instantiate(strawberryObj, hit.point, Quaternion.identity);
+                inventoryHolder.InventorySystem.InventorySlots[equip.index].RemoveFromStack(1);
+                canPlace = false;
+                Invoke("wait", 0.4f);
+            }
         }
 
         text.text = hint;

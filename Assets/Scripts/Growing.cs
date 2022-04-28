@@ -47,11 +47,6 @@ public class Growing : MonoBehaviour
         Debug.Log(scaleFactor);
         InvokeRepeating("Scale", 1f, 1f);
         Invoke("Grown", current.growthTime);
-        if(id == 1)
-        {
-            MeshFilter meah = GetComponent<MeshFilter>();
-            meah.mesh = null;
-        }
     }
 
     private void OnParticleCollision(GameObject other)
