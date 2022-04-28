@@ -18,6 +18,8 @@ public class PickUpStuff : MonoBehaviour
     public GameObject strawberryObj;
     public WateringCan can;
     public InventoryEquip equip;
+    public PlantIndex index;
+    public Stats stats;
     public Text text;
     string hint = "";
     bool canPlace = true;
@@ -63,6 +65,21 @@ public class PickUpStuff : MonoBehaviour
             hint = "Pick Up Shovel";
         }
 
+        if (hit.collider.gameObject.tag == "strawberry")
+        {
+            hint = "Pick Strawberries";
+        }
+
+        if (hit.collider.gameObject.tag == "potato")
+        {
+            hint = "Pick Potato";
+        }
+
+        if (hit.collider.gameObject.tag == "carrot")
+        {
+            hint = "Pick Carrot";
+        }
+
         if (Input.GetMouseButton(0))
         {
             
@@ -80,14 +97,33 @@ public class PickUpStuff : MonoBehaviour
                 Destroy(hit.collider.gameObject);
                 inventoryHolder.InventorySystem.AddToInventory(shovelData, 1);
             }
-            if(hit.collider.gameObject.tag == "soil")
+            if(hit.collider.gameObject.tag == "strawberry")
             {
                 inventoryHolder.InventorySystem.AddToInventory(strawberry, 1);
             }
-            if(hit.collider.gameObject.tag == "potato" && inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID == 1)
+            if(hit.collider.gameObject.tag == "potato")
             {
-                Destroy(hit.collider.gameObject);
-                inventoryHolder.InventorySystem.AddToInventory(potato, 2);
+                inventoryHolder.InventorySystem.AddToInventory(potato, 1);
+            }
+            if (hit.collider.gameObject.tag == "carrot")
+            {
+                inventoryHolder.InventorySystem.AddToInventory(carrot, 1);
+            }
+        }
+
+        if(Input.GetMouseButton(0) && inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID == 1)
+        {
+            if (hit.collider.gameObject.tag == "strawberry")
+            {
+                hit.collider.gameObject.SendMessage("Get");
+            }
+            if (hit.collider.gameObject.tag == "potato")
+            {
+                hit.collider.gameObject.SendMessage("Get");
+            }
+            if (hit.collider.gameObject.tag == "carrot")
+            {
+                hit.collider.gameObject.SendMessage("Get");
             }
         }
 
@@ -116,6 +152,23 @@ public class PickUpStuff : MonoBehaviour
                 canPlace = false;
                 Invoke("wait", 0.4f);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            switch (inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID)
+            {
+                case 2:
+                    stats.healthUpdate(index.potato.nutrition);
+                    break;
+                case 3:
+                    stats.healthUpdate(index.carrot.nutrition);
+                    break;
+                case 5:
+                    stats.healthUpdate(index.strawberry.nutrition);
+                    break;
+            }
+            inventoryHolder.InventorySystem.InventorySlots[equip.index].RemoveFromStack(1);
         }
 
         text.text = hint;

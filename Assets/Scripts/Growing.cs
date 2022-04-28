@@ -9,6 +9,8 @@ public class Growing : MonoBehaviour
     public int id;
     public bool isGrown = false;
     public Stats stats;
+    public InventoryHolder inventory;
+    public InventoryData data;
     bool watered = false;
     float scaleFactor;
     GameObject seedling;
@@ -68,5 +70,15 @@ public class Growing : MonoBehaviour
     {
         seedling.transform.localScale += new Vector3(scaleFactor,scaleFactor,scaleFactor);
         Debug.Log("Grow");
+    }
+
+    void Get()
+    {
+        if (isGrown)
+        {
+            inventory.InventorySystem.AddToInventory(data, 1);
+            Destroy(seedling);
+            Destroy(gameObject);
+        }
     }
 }

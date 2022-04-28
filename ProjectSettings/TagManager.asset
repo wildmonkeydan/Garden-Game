@@ -9,6 +9,8 @@ TagManager:
   - h2o
   - shovelpickup
   - potato
+  - carrot
+  - strawberry
   layers:
   - Default
   - TransparentFX
