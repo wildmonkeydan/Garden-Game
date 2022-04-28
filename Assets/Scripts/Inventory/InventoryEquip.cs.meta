@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 312ea6c525789694a83864d0bad85f59
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inventory: {instanceID: 0}
+  - wateringCan: {fileID: 919132149155446097, guid: 10c108d7eae42a9428f02162592c4176, type: 3}
+  - shovel: {fileID: 919132149155446097, guid: 225cd0ad36f5fe343a2c03c82fe917e4, type: 3}
+  - potato: {fileID: 919132149155446097, guid: 01cf53346b70c7841bfa97b074a48a35, type: 3}
+  - carrot: {fileID: 919132149155446097, guid: acb778e905f451c4cb11c4fdda616a84, type: 3}
+  - strawberry: {fileID: 919132149155446097, guid: 2496920374bb0034dbcad22644260ae4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
