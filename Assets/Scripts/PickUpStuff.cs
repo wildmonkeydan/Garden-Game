@@ -11,7 +11,9 @@ public class PickUpStuff : MonoBehaviour
     public InventoryData wateringCanData;
     public InventoryData shovelData;
     public InventoryData potato;
+    public InventoryData carrot;
     public GameObject potatoObj;
+    public GameObject carrotObj;
     public WateringCan can;
     public InventoryEquip equip;
     public Text text;
@@ -80,22 +82,31 @@ public class PickUpStuff : MonoBehaviour
             {
                 inventoryHolder.InventorySystem.AddToInventory(potato, 1);
             }
-            if(hit.collider.gameObject.tag == "potato")
+            if(hit.collider.gameObject.tag == "potato" && inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID == 1)
             {
                 Destroy(hit.collider.gameObject);
-                inventoryHolder.InventorySystem.AddToInventory(potato, 1);
+                inventoryHolder.InventorySystem.AddToInventory(potato, 2);
             }
         }
 
         if (Input.GetMouseButton(1))
         {
-            if (hit.collider.gameObject.tag == "soil" && inventoryHolder.InventorySystem.InventorySlots[equip.index].StackSize > 0 && canPlace)
+            if (hit.collider.gameObject.tag == "soil" && inventoryHolder.InventorySystem.InventorySlots[equip.index].StackSize > 0 && canPlace && inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID == 2)
             {
-                GameObject potatoInstance = Instantiate(potatoObj,hit.point,Quaternion.identity);
+                Instantiate(potatoObj,hit.point,Quaternion.identity);
                 inventoryHolder.InventorySystem.InventorySlots[equip.index].RemoveFromStack(1);
                 canPlace = false;
                 Invoke("wait", 0.4f);
             }
+
+            if (hit.collider.gameObject.tag == "soil" && inventoryHolder.InventorySystem.InventorySlots[equip.index].StackSize > 0 && canPlace && inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID == 3)
+            {
+                Instantiate(carrotObj, hit.point, Quaternion.identity);
+                inventoryHolder.InventorySystem.InventorySlots[equip.index].RemoveFromStack(1);
+                canPlace = false;
+                Invoke("wait", 0.4f);
+            }
+
         }
 
         text.text = hint;

@@ -9,11 +9,13 @@ public class InventoryEquip : MonoBehaviour
     public GameObject wateringCan;
     public GameObject shovel;
     public GameObject potato;
+    public GameObject carrot;
     void Start()
     {
         wateringCan.SetActive(false);
         shovel.SetActive(false);
         potato.SetActive(false);
+        carrot.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,18 +37,28 @@ public class InventoryEquip : MonoBehaviour
                 wateringCan.SetActive(true);
                 shovel.SetActive(false);
                 potato.SetActive(false);
+                carrot.SetActive(false);
             }
             if(inventory.InventorySystem.InventorySlots[index].ItemData.ID == 1)
             {
                 wateringCan.SetActive(false);
                 shovel.SetActive(true);
                 potato.SetActive(false);
+                carrot.SetActive(false);
             }
             if(inventory.InventorySystem.InventorySlots[index].ItemData.ID == 2)
             {
                 wateringCan.SetActive(false);
                 shovel.SetActive(false);
                 potato.SetActive(true);
+                carrot.SetActive(false);
+            }
+            if(inventory.InventorySystem.InventorySlots[index].ItemData.ID == 3)
+            {
+                wateringCan.SetActive(false);
+                shovel.SetActive(false);
+                potato.SetActive(false);
+                carrot.SetActive(true);
             }
         }
         else
