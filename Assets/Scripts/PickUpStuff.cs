@@ -13,9 +13,11 @@ public class PickUpStuff : MonoBehaviour
     public InventoryData potato;
     public InventoryData carrot;
     public InventoryData strawberry;
+    public InventoryData blackberry;
     public GameObject potatoObj;
     public GameObject carrotObj;
     public GameObject strawberryObj;
+    public GameObject blackberryObj;
     public WateringCan can;
     public InventoryEquip equip;
     public PlantIndex index;
@@ -80,6 +82,11 @@ public class PickUpStuff : MonoBehaviour
             hint = "Pick Carrot";
         }
 
+        if(hit.collider.gameObject.tag == "blackberry")
+        {
+            hint = "Pick Blackberry";
+        }
+
         if (Input.GetMouseButton(0))
         {
             
@@ -109,6 +116,10 @@ public class PickUpStuff : MonoBehaviour
             {
                 inventoryHolder.InventorySystem.AddToInventory(carrot, 1);
             }
+            if (hit.collider.gameObject.tag == "blackberry")
+            {
+                inventoryHolder.InventorySystem.AddToInventory(blackberry, 1);
+            }
         }
 
         if(Input.GetMouseButton(0) && inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID == 1)
@@ -122,6 +133,10 @@ public class PickUpStuff : MonoBehaviour
                 hit.collider.gameObject.SendMessage("Get");
             }
             if (hit.collider.gameObject.tag == "carrot")
+            {
+                hit.collider.gameObject.SendMessage("Get");
+            }
+            if (hit.collider.gameObject.tag == "blackberry")
             {
                 hit.collider.gameObject.SendMessage("Get");
             }
@@ -152,6 +167,14 @@ public class PickUpStuff : MonoBehaviour
                 canPlace = false;
                 Invoke("wait", 0.4f);
             }
+
+            if (hit.collider.gameObject.tag == "soil" && inventoryHolder.InventorySystem.InventorySlots[equip.index].StackSize > 0 && canPlace && inventoryHolder.InventorySystem.InventorySlots[equip.index].ItemData.ID == 4)
+            {
+                Instantiate(blackberryObj, hit.point, Quaternion.identity);
+                inventoryHolder.InventorySystem.InventorySlots[equip.index].RemoveFromStack(1);
+                canPlace = false;
+                Invoke("wait", 0.4f);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -163,6 +186,9 @@ public class PickUpStuff : MonoBehaviour
                     break;
                 case 3:
                     stats.healthUpdate(index.carrot.nutrition);
+                    break;
+                case 4:
+                    stats.healthUpdate(index.blackberry.nutrition);
                     break;
                 case 5:
                     stats.healthUpdate(index.strawberry.nutrition);
