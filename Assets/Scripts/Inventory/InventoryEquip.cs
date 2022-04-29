@@ -15,6 +15,8 @@ public class InventoryEquip : MonoBehaviour
     public GameObject blackberry;
     public Image[] slots;
     public Material[] materials;
+    public Text[] nums;
+    public Image highlight;
     void Start()
     {
         wateringCan.SetActive(false);
@@ -101,6 +103,8 @@ public class InventoryEquip : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             slots[i].material = materials[inventory.InventorySystem.InventorySlots[i].ItemData.ID];
+            nums[i].text = string.Format("{0}",inventory.InventorySystem.InventorySlots[i].StackSize);
         }
+        highlight.rectTransform.anchoredPosition = new Vector3((index * 6.9f) - 30.83f, -43.77f, 0);
     }
 }
