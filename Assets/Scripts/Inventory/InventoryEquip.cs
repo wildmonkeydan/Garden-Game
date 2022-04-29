@@ -17,6 +17,8 @@ public class InventoryEquip : MonoBehaviour
     public Material[] materials;
     public Text[] nums;
     public Image highlight;
+    public Slider temp;
+    float val = 0;
     void Start()
     {
         wateringCan.SetActive(false);
@@ -106,5 +108,7 @@ public class InventoryEquip : MonoBehaviour
             nums[i].text = string.Format("{0}",inventory.InventorySystem.InventorySlots[i].StackSize);
         }
         highlight.rectTransform.anchoredPosition = new Vector3((index * 6.9f) - 30.83f, -43.77f, 0);
+        val += 0.00001f;
+        temp.value = val;
     }
 }
